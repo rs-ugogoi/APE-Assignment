@@ -1,0 +1,36 @@
+.background
+{
+	background-image: url("/image/19366.jpg");
+	background-size: cover;
+	display: flex;
+    position: absolute;
+    height:95%;
+    width:95%;
+}
+
+.block
+{
+	text-align: center ; 
+	font-size: 50px;
+	background:#2196f3;
+	padding-left:10px;
+	padding-right:10px; 
+	margin: auto; 
+	border-radius: 30px; 
+	padding-bottom: 10px;
+	display:flex;
+	flex-direction:column;
+	box-shadow: 17px 17px 13px #4fa5e5b5;
+}
+
+.textBox
+{
+	height:34px ; 
+	font-size:22px;
+	border-radius: 10px;
+	
+}
+
+input #form {
+	width: 100px !important;
+}
