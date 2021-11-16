@@ -3,25 +3,51 @@ package com.EmployeeDataManagement.pojo;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import org.springframework.lang.NonNull;
+
 @Entity
 public class EmployeeDataPojo {
 
 	@Id
 	int empId;
-	
+	@NonNull
 	String name;
+	@NonNull
 	String surname;
+	@NonNull
 	long pNumber;
+	@NonNull
 	String email;
 	
-	
-	
+//	@OneToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+//	@Column(name="password")
+//	EmployeeSetPasswordPojo employeePassword;
+//	
 	public EmployeeDataPojo() {
 		super();
 	}
 	
 	
+	@NonNull
+	String password;
 	
+	public EmployeeDataPojo(int empId, String password) {
+		super();
+		this.empId = empId;
+		this.password = password;
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
 	public EmployeeDataPojo(int empId, String name, String surname, long pNumber, String email) {
 		super();
 		this.empId = empId;
