@@ -40,13 +40,19 @@ public class EmployeeRegistrationController {
 		{
 			employeeDataRepository.setPassword(request.getParameter("password"),empId);
 			session.invalidate();
-			return "redirect:/home";
+			return "redirect:/landingPage";
 		}
 		else
 		{
 			session.setAttribute("message","Incorrect Password");
 			return "passwordConfig";
 		}
+	}
+	
+	@GetMapping("logout")
+	public String logoutEmployee()
+	{
+		return "logout";
 	}
 	
 }

@@ -11,6 +11,17 @@
 <link rel="stylesheet" type="text/css" href="/css/custom.css" >
 </head>
 <body class="background">
+
+<nav style="background-color:#121eb9; justify-content:space-between ; position: absolute; display: flex; height:50px; width: 100%; z-index: 1">
+	<div style="padding-top: 6px; ">
+		<a href="landingPage" style=" padding-left:15px; color:white; text-decoration: none ;font-family: 'Play', sans-serif; font-size: 30px">Home</a>
+	</div >
+	<div style="padding-top: 6px;">
+		<a href="profile" style="padding-top: 6px; padding-right:15px; color:white; text-decoration: none ;font-family: 'Play', sans-serif; font-size: 30px">Profile</a>
+	</div>
+</nav>
+
+<div class="pageDisplay" >
 <div class="block" style="color:white; text-decoration: none ;font-family: 'Play', sans-serif;">
 Sign Up
 	<form action="employeeSignUp" method="post">
@@ -58,6 +69,7 @@ Sign Up
 		</table>
 		<input class="textBox" style="font-size:30px" type="submit" onclick="test()">
 	</form>
+</div>
 </div>
 </body>
 </html>

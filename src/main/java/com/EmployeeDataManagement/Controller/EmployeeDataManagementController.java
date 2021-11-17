@@ -9,7 +9,7 @@ public class EmployeeDataManagementController {
 	
 	
 
-	@GetMapping({"/","/home"})
+	@GetMapping({"/","/landingPage"})
 	public String landingPage()
 	{
 		return "landingPage";
@@ -27,5 +27,10 @@ public class EmployeeDataManagementController {
 		return "signup";
 	}
 	
+	@GetMapping("profile")
+	public String profile()
+	{
+		return "home";
+	}
 	
 }

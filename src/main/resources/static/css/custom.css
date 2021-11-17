@@ -2,9 +2,15 @@
 {
 	background-image: url("/image/19366.jpg");
 	background-size: cover;
-	display: flex;
-    position: absolute;
-    height:95%;
+	margin: 0px;
+}
+
+
+.pageDisplay
+{
+	position: absolute;
+    display: flex;
+    height:90%;
     width:95%;
 }
 
