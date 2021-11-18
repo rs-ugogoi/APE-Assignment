@@ -19,7 +19,7 @@
 	
 	if(name==null)
 	{
-		response.sendRedirect("login");
+		response.sendRedirect("loginPage");
 	}
 %>
 <body class="background">

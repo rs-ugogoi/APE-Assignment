@@ -21,17 +21,17 @@ public class EmployeeRegistrationController {
 	
 	HttpSession session;
 	
-	@PostMapping("employeeSignUp")
-	public String signUpDetails(@ModelAttribute EmployeeDataPojo employeeDetails, HttpServletResponse response,HttpServletRequest request)
-	{
-		session=request.getSession();
-		session.setAttribute("empId",request.getParameter("empId"));
-		session.setAttribute("message","");
-		employeeDataRepository.save(employeeDetails);
-		return "passwordConfig";
-	}
+//	@PostMapping("employeeSignUp")
+//	public String signUpDetails(@ModelAttribute EmployeeDataPojo employeeDetails, HttpServletResponse response,HttpServletRequest request)
+//	{
+//		session=request.getSession();
+//		session.setAttribute("empId",request.getParameter("empId"));
+//		session.setAttribute("message","");
+//		employeeDataRepository.save(employeeDetails);
+//		return "passwordConfig";
+//	}
 	
-	@GetMapping("setPassword")
+	@PostMapping("setPassword")
 	public String setEmployeePassword(@ModelAttribute EmployeeDataPojo employeeData, HttpServletResponse response,HttpServletRequest request)
 	{
 		String empId=(String)session.getAttribute("empId");
