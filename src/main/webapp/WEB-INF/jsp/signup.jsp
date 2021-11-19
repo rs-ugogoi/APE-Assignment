@@ -10,6 +10,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Play&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/css/custom.css" >
 </head>
+
+<%
+				String message=(String)session.getAttribute("message");
+%>
+
 <body class="background">
 
 <nav style="background-color:#121eb9; justify-content:space-between ; position: absolute; display: flex; height:50px; width: 100%; z-index: 1">
@@ -67,6 +72,9 @@ Sign Up
 				</tr>
 			</tr> -->
 		</table>
+		
+				<p style="margin: 0px; color:red ; font-size: 20px"><%= message %></p>	
+		
 		<input class="textBox" style="font-size:30px" type="submit" onclick="test()">
 	</form>
 </div>

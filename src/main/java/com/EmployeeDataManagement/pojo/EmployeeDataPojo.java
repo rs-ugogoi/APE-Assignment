@@ -19,10 +19,7 @@ public class EmployeeDataPojo {
 	@NonNull
 	String email;
 	
-//	@OneToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
-//	@Column(name="password")
-//	EmployeeSetPasswordPojo employeePassword;
-//	
+
 	public EmployeeDataPojo() {
 		super();
 	}

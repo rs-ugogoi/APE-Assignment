@@ -5,8 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -19,17 +19,35 @@ public class EmployeeRegistrationController {
 	@Autowired
 	EmployeeDataRepository employeeDataRepository;
 	
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
+		
 	HttpSession session;
 	
-//	@PostMapping("employeeSignUp")
-//	public String signUpDetails(@ModelAttribute EmployeeDataPojo employeeDetails, HttpServletResponse response,HttpServletRequest request)
-//	{
-//		session=request.getSession();
-//		session.setAttribute("empId",request.getParameter("empId"));
-//		session.setAttribute("message","");
-//		employeeDataRepository.save(employeeDetails);
-//		return "passwordConfig";
-//	}
+	@PostMapping("employeeSignUp")
+	public String signUpDetails(@ModelAttribute EmployeeDataPojo employeeDetails, HttpServletResponse response,HttpServletRequest request)
+	{
+		session=request.getSession();
+		session.setAttribute("message","");
+
+		if(employeeDataRepository.findEmp(request.getParameter("email"))==null)
+		{
+			
+			session.setAttribute("empId",request.getParameter("empId"));
+			session.setAttribute("message","");
+			
+			employeeDataRepository.save(employeeDetails);
+			return "passwordConfig";
+		
+		}
+		
+		else
+		{
+			session=request.getSession();
+			session.setAttribute("message","Email already registered");
+			return "signup";
+		}
+	}
 	
 	@PostMapping("setPassword")
 	public String setEmployeePassword(@ModelAttribute EmployeeDataPojo employeeData, HttpServletResponse response,HttpServletRequest request)
@@ -38,7 +56,8 @@ public class EmployeeRegistrationController {
 		session=request.getSession();
 		if(request.getParameter("password").equals(request.getParameter("reEnterPassword")))
 		{
-			employeeDataRepository.setPassword(request.getParameter("password"),empId);
+			String password=bCryptPasswordEncoder.encode(request.getParameter("password"));
+			employeeDataRepository.setPassword(password,empId);
 			session.invalidate();
 			return "redirect:/landingPage";
 		}
@@ -47,12 +66,6 @@ public class EmployeeRegistrationController {
 			session.setAttribute("message","Incorrect Password");
 			return "passwordConfig";
 		}
-	}
-	
-	@GetMapping("logout")
-	public String logoutEmployee()
-	{
-		return "logout";
 	}
 	
 }
