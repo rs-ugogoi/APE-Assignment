@@ -17,7 +17,7 @@
 	response.setHeader("Cache-Control","no-cache, no-store,must-revalidate");
 	response.setHeader("Pragma", "no-cache");
 	
-	if(name==null)
+	if(name==null)	
 	{
 		response.sendRedirect("loginPage");
 	}

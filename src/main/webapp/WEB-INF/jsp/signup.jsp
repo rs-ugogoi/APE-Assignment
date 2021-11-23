@@ -13,6 +13,11 @@
 
 <%
 				String message=(String)session.getAttribute("message");
+				if(message==null)
+				{
+					message="";
+				}
+
 %>
 
 <body class="background">
@@ -34,23 +39,23 @@ Sign Up
 		
 			<tr>
 				<td>Name:</td>
-				<td><input class="textBox" type="text" name="name"></td>
+				<td><input class="textBox" type="text" name="name" required></td>
 			</tr>
 			<tr>
 				<td>Surname:</td>
-				<td><input class="textBox" type="text" name="surname"></td>
+				<td><input class="textBox" type="text" name="surname" required></td>
 			</tr>
 			<tr>
 				<td>Employee Id:</td>
-				<td><input class="textBox" type="text" name="empId"></td>
+				<td><input class="textBox" type="number" name="empId" required></td>
 			</tr>
 			<tr>
 				<td>Phone No:</td>
-				<td><input class="textBox" type="number" name="pNumber"></td>
+				<td><input class="textBox" type="number" name="pNumber" required></td>
 			</tr>
 			<tr>
 				<td>Email Id:</td>
-				<td><input class="textBox" type="email" name="email"></td>
+				<td><input class="textBox" type="email" name="email" required></td>
 			</tr>
 			<!-- <tr>
 				<td style="text-aligh:center">Gender:</td>
@@ -77,6 +82,12 @@ Sign Up
 		
 		<input class="textBox" style="font-size:30px" type="submit" onclick="test()">
 	</form>
+	<%
+		if(request.getParameter("empId")==null)
+		{
+			int empId=0;
+		}	
+	%>
 </div>
 </div>
 </body>

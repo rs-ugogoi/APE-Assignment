@@ -30,7 +30,7 @@ public class EmployeeRegistrationController {
 		session=request.getSession();
 		session.setAttribute("message","");
 
-		if(employeeDataRepository.findEmp(request.getParameter("email"))==null)
+		if(request.getParameter("email")!=null && employeeDataRepository.findEmp(request.getParameter("email"))==null)
 		{
 			
 			session.setAttribute("empId",request.getParameter("empId"));

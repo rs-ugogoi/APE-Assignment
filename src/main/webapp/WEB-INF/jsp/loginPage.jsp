@@ -36,11 +36,11 @@
 		message="";
 	}
 %>
-<form action="employeeLogin" method="post" style="font-size:40px">
+<form action="loginPage" method="post" style="font-size:40px">
 		<table>
 			<tr>
 				<td>Email Id:</td>
-				<td><input class="textBox" name="email" type="text" ></td>
+				<td><input class="textBox" name="username" type="text" ></td>
 			</tr>
 			<tr>
 			<td></td><td></td>
