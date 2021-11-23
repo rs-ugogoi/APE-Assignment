@@ -18,6 +18,7 @@ public class EmployeeDataPojo {
 	long pNumber;
 	@NonNull
 	String email;
+	String role;
 	
 
 	public EmployeeDataPojo() {
@@ -54,6 +55,14 @@ public class EmployeeDataPojo {
 		this.email = email;
 	}
 
+	public String getRole() {
+		return role;
+	}
+
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 
 
 	public int getEmpId() {
@@ -86,7 +95,6 @@ public class EmployeeDataPojo {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
 	
 	
 }

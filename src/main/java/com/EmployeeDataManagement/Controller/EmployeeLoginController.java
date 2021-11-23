@@ -28,7 +28,7 @@ public class EmployeeLoginController {
 	{
 
 		
-		EmployeeDataPojo findEmp=employeeDataRepository.findEmp(request.getParameter("email"));
+		EmployeeDataPojo findEmp=employeeDataRepository.findEmp(request.getParameter("username"));
 		
 		
 		if( findEmp!= null && passwordEncode.matches(request.getParameter("password"), findEmp.getPassword()))
