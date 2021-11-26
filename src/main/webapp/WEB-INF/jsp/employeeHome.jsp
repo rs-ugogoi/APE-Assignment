@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@page import="com.EmployeeDataManagement.pojo.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,6 +30,12 @@
 <div class="pageDisplay" >
 <div class="block" style="color:white; text-decoration: none ;font-family: 'Play', sans-serif;">
 <p>Welcome EMPLOYEE</p>
+
+		${employee.empId} ${employee.name}
+		<br>
+		${employee.surname} ${employee.pNumber}
+		<br>
+		${employee.email} ${employee.role}
 </div>
 </div>
 </body>

@@ -22,11 +22,14 @@
 
 <div class="pageDisplay" >	
 <div class="block">
-	<b><a href="adminHome" style="color:white; text-decoration: none ;font-family: 'Play', sans-serif; font-size: 50px" >ADMIN</a>
+	<b>
+	<!--  <a href="adminHome" style="color:white; text-decoration: none ;font-family: 'Play', sans-serif; font-size: 50px" >ADMIN</a>
 	<br/>
 	<a href="analystHome" style="color:white; text-decoration: none ;font-family: 'Play', sans-serif; font-size: 50px" >ANALYST</a>
 	<br/>
 	<a href="employeeHome" style="color:white; text-decoration: none ;font-family: 'Play', sans-serif; font-size: 50px" >EMPLOYEE</a>
+	<br/> -->
+	<a href="loginPage" style="color:white; text-decoration: none ;font-family: 'Play', sans-serif; font-size: 50px" >LOGIN</a>
 	<br/>
 	<a href="signup" style="color:white; text-decoration: none; font-family: 'Play', sans-serif; font-size: 50px">SIGN UP</a>
 	</b>

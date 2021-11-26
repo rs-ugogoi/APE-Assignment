@@ -35,7 +35,7 @@ public class EmployeeLoginController {
 		{
 			HttpSession session=request.getSession();
 			session.setAttribute("name",findEmp.getName());
-			response.sendRedirect("profile");
+			response.sendRedirect("employeeHome");
 		}
 		else
 		{

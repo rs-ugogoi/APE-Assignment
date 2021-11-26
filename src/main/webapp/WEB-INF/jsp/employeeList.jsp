@@ -16,6 +16,7 @@
 <script type="text/javascript" src="/js/custom.js"></script	>
 
 </head>
+
 <%
 	String name=(String)session.getAttribute("name");
 
@@ -27,6 +28,7 @@
 		response.sendRedirect("loginPage");
 	}
 %>
+
 <body class="background">
 <nav style="background-color:#121eb9; justify-content:space-between ; display: flex; height:50px; width: 100%; z-index: 1">
 	<div style="padding-top: 6px; ">
@@ -37,19 +39,33 @@
 		<a href="logoutPage" style="padding-top: 6px; padding-right:15px; color:white; text-decoration: none ;font-family: 'Play', sans-serif; font-size: 30px" onClick="logout()">Logout</a>
 	</div>
 </nav>
-<br>
-<br>
-<div class="adminDisplay" >
-<div class="block" style="color:white; text-decoration: none ;font-family: 'Play', sans-serif;">
-<p>Welcome ADMIN</p>
-</div>
-</div>
-<br>
-<br>
-	<div class="table">
-		<a href="employeeList">List Of Employees</a>
-		<a href="updateEmployee">Update Details</a>
-		<a href="deleteEmployee">Remove Employee</a>
+	<br>
+	
+	<div class="adminDisplay" style="height:200px">
+		<div class="block" style="color:white; text-decoration: none ;font-family: 'Play', sans-serif;">
+			<p>List Of Employees</p>
+		</div>
 	</div>
+<br>
+	
+	<div class="table">
+		<table>
+			<thead>
+			
+			</thead>
+		<tbody>
+			<c:forEach items="${employee}" var="list">
+				<tr>
+						<td>${list.empId}</td><td>${list.name}</td>
+						<td>${list.surname}</td><td>${list.pNumber}</td>
+						<td>${list.email}</td><td>${list.role}</td>
+						<td><a href="update"><button>Update</button></a></td>
+						<td><input type="button" value="Delete" name="option"></td>
+				</tr>
+			</c:forEach>		
+		</tbody>
+		</table>
+	</div>
+
 </body>
 </html>
