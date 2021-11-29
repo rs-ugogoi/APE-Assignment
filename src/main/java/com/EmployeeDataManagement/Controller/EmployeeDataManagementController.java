@@ -4,6 +4,10 @@ package com.EmployeeDataManagement.Controller;
 
 
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -25,7 +29,6 @@ public class EmployeeDataManagementController {
 	@GetMapping("loginPage")
 	public String loginPage()
 	{
-		System.out.println("test1");
 		return "loginPage";
 	}
 		
@@ -36,9 +39,16 @@ public class EmployeeDataManagementController {
 	}
 	
 	@GetMapping("profile")
-	public String profile()
+	public String profile(HttpServletResponse response,HttpServletRequest request)
 	{
-		return "home";
+		HttpSession session=request.getSession();
+		if(session.getAttribute("role")!=null && session.getAttribute("role").equals("ROLE_USER"))
+			return "employeeHome";
+		else if(session.getAttribute("role")!=null && session.getAttribute("role").equals("ROLE_ANALYST"))
+			return "analystHome";
+		else if(session.getAttribute("role")!=null &&session.getAttribute("role").equals("ROLE_ADMIN"))
+			return "adminHome";
+		return "loginPage" ;
 	}
 		
 	@GetMapping("error")
@@ -47,6 +57,11 @@ public class EmployeeDataManagementController {
 		return "home";
 	}
 	
+	@GetMapping("update")
+	public String update()
+	{
+		return "update";
+	}
 	
 	@GetMapping("analystHome")
 	public String analystHome()

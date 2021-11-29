@@ -23,4 +23,16 @@ public interface EmployeeDataRepository extends JpaRepository<EmployeeDataPojo, 
 	
 	@Query("from EmployeeDataPojo where email=?1") 
 	EmployeeDataPojo findEmp(String email);
+	
+	
+	@Modifying()
+	@Query(value="UPDATE EmployeeDataPojo set email=:email,name=:name,surname=:surname,p_number=:pNumber where emp_id=:empId")
+	@Transactional
+	void updateEmployeeDetails
+			(@Param("email") String email,
+			@Param("name") String name,
+			@Param("surname") String surname,
+			@Param("pNumber") String pNumber, 
+			@Param("empId") String empId);
+
 }

@@ -27,14 +27,21 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 		session.setAttribute("name",request.getParameter("username"));
 		
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+		
+//		Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+//		authorities=(Collection<GrantedAuthority>) authentication.getAuthorities();
+		
 		for (GrantedAuthority grantedAuthority : authorities) {
 			if (grantedAuthority.getAuthority().equals("ROLE_ANALYST")) {
+				session.setAttribute("role",grantedAuthority.getAuthority());
 				redirectUrl = "/analystHome";
 				break;
 			} else if (grantedAuthority.getAuthority().equals("ROLE_USER")) {
+				session.setAttribute("role",grantedAuthority.getAuthority());
 				redirectUrl = "/employeeHome";
 				break;
 			} else if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
+				session.setAttribute("role",grantedAuthority.getAuthority());
 				redirectUrl = "/adminHome";
 				break;
 			}
