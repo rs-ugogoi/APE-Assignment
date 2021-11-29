@@ -36,9 +36,16 @@
 	box-shadow: 17px 17px 13px #4fa5e5b5;
 }
 
+.centerBlock
+{
+	text-align: center;
+	display: flex;
+	justify-content: center;
+}
 
 .table
 {
+	
 	text-align: center ; 
 	font-size: 25px;
 	background:#ffffff;

@@ -3,6 +3,7 @@ package com.EmployeeDataManagement.Security;
 import java.util.Collection;
 import java.util.List;
 
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,7 +23,20 @@ public class CustomUserDetails implements UserDetails {
 	
 	public CustomUserDetails(EmployeeDataPojo employeeDataPojo) {
 		super();
-		this.employeeDataPojo = employeeDataPojo;
+		
+		if(employeeDataPojo.getName().equals( null))
+		{
+			check();
+		}
+		else
+		{
+			this.employeeDataPojo = employeeDataPojo;
+		}
+	}
+	
+	public String check()
+	{
+		return "loginPage";
 	}
 
 	@Override

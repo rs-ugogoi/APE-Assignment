@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<%@page import="com.EmployeeDataManagement.pojo.*" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,18 +16,6 @@
 
 </head>
 
-<%
-	String name=(String)session.getAttribute("name");
-
-	response.setHeader("Cache-Control","no-cache, no-store,must-revalidate");
-	response.setHeader("Pragma", "no-cache");
-	
-	if(name==null)	
-	{
-		response.sendRedirect("loginPage");
-	}
-%>
-
 <body class="background">
 <nav style="background-color:#121eb9; justify-content:space-between ; display: flex; height:50px; width: 100%; z-index: 1">
 	<div style="padding-top: 6px; ">
@@ -39,35 +26,51 @@
 		<a href="logoutPage" style="padding-top: 6px; padding-right:15px; color:white; text-decoration: none ;font-family: 'Play', sans-serif; font-size: 30px" onClick="logout()">Logout</a>
 	</div>
 </nav>
-	<br>
-	
-	<div class="adminDisplay" style="height:200px">
-		<div class="block" style="color:white; text-decoration: none ;font-family: 'Play', sans-serif;">
-			<p>List Of Employees</p>
-		</div>
-	</div>
+<!-- <br>
 <br>
-	
-	<div class="table">
-		<table>
-			<thead>
-			
-			</thead>
-		<tbody>
-			<c:forEach items="${employee}" var="list">
-			<form action="adminAction" method="post" >
-				<tr>
-						<td>${list.empId}</td><td>${list.name}</td>
-						<td>${list.surname}</td><td>${list.pNumber}</td>
-						<td>${list.email}</td><td>${list.role}</td>
-						<td><a href="update"><button>Update</button></a></td>
-						<td><input type="button" value="Delete" name="option"></td>
-				</tr>
-			</form>
-			</c:forEach>		
-		</tbody>
-		</table>
-	</div>
+<div class="adminDisplay" >
+<div class="block" style="color:white; text-decoration: none ;font-family: 'Play', sans-serif;">
+<p>Welcome EMPLOYEE</p>
 
+		${employee.empId} ${employee.name}
+		<br>
+		${employee.surname} ${employee.pNumber}
+		<br>
+		${employee.email} ${employee.role}
+</div>
+</div> -->
+
+<br>
+<br>
+<form class="centerBlock" action="updateEmployeeDetails" method="post" style="font-size:40px">
+		<table>
+			<tr>
+				<td>Employee ID:</td>
+				<td><input class="textBox" name="empId" value="${employee.empId}" type="number"></td>
+			</tr>
+			<tr>
+				<td>Email Id:</td>
+				<td><input class="textBox" name="email" value="${employee.email}" type="email" ></td>
+			</tr>
+			<tr>
+				<td>Name:</td>
+				<td><input class="textBox" name="name" value="${employee.name}" type="text" ></td>
+			</tr>
+			<tr>
+				<td>Surname:</td>
+				<td><input class="textBox" name="surname" value="${employee.surname}" type="text" ></td>
+			</tr>
+			<tr>
+				<td>Mobile Number:</td>
+				<td><input class="textBox" name="pNumber" value="${employee.pNumber}" type="text" ></td>
+			</tr>
+			<tr>
+			<td colspan="2">
+				<input class="textBox" style="font-size:30px" type="submit"  value="UPDATE">
+			</td>
+			</tr>
+		</table>
+		<!-- onclick="test()" -->
+</form>
 </body>
 </html>

@@ -17,7 +17,7 @@
 </head>
 
 <body class="background">
-<nav style="background-color:#121eb9; justify-content:space-between ; position: absolute; display: flex; height:50px; width: 100%; z-index: 1">
+<nav style="background-color:#121eb9; justify-content:space-between ; display: flex; height:50px; width: 100%; z-index: 1">
 	<div style="padding-top: 6px; ">
 		<a href="landingPage" style=" padding-left:15px; color:white; text-decoration: none ;font-family: 'Play', sans-serif; font-size: 30px">Home</a>
 	</div >
@@ -26,17 +26,45 @@
 		<a href="logoutPage" style="padding-top: 6px; padding-right:15px; color:white; text-decoration: none ;font-family: 'Play', sans-serif; font-size: 30px" onClick="logout()">Logout</a>
 	</div>
 </nav>
-
-<div class="pageDisplay" >
+<br>
+<br>
+<div class="adminDisplay" >
 <div class="block" style="color:white; text-decoration: none ;font-family: 'Play', sans-serif;">
 <p>Welcome EMPLOYEE</p>
-
-		${employee.empId} ${employee.name}
-		<br>
-		${employee.surname} ${employee.pNumber}
-		<br>
-		${employee.email} ${employee.role}
 </div>
+</div>
+<br>
+<br>
+<div class="centerBlock" style="color:black; font-size:30px;text-align:start ; text-decoration: none ;font-family: 'Play', sans-serif;">
+		
+		<table>
+			<tr>
+				<td colspan="2">Details</td>
+			</tr>
+			<tr>
+				<td>Emp Id:</td><td>${employee.empId}</td>
+			</tr>
+			<tr>
+				<td>Name:</td><td>${employee.name} ${employee.surname}</td>
+			</tr>
+			<tr>
+				<td>Mobile no:</td><td>${employee.pNumber}</td>
+			</tr>
+			<tr>
+				<td>Email Id:</td><td>${employee.email}</td>
+			</tr>	
+		</table>
+</div>
+<br>
+<div class="centerBlock" style="display:block; color:black; font-size:30px; font-family: 'Play', sans-serif;">
+	Update Details:
+	<a style="text-decoration: none" href="update"><button class="textBox" >Update</button></a>
+	<br>
+	Reset password:
+	<a style="text-decoration: none" href="password"><button class="textBox" >Password</button></a>
+	<br>
+	Delete Account:
+	<a style="text-decoration: none" href="delete"><button class="textBox" >Delete</button></a>
 </div>
 </body>
 </html>
