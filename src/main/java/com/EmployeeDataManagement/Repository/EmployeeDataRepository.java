@@ -18,11 +18,18 @@ public interface EmployeeDataRepository extends JpaRepository<EmployeeDataPojo, 
 	@Transactional
 	void setPassword(@Param("password") String password, @Param("empId") String empId);
 	
-//	@Query("from EmployeeDataPojo where email=?1 and password=?2") 
-//	EmployeeDataPojo login(String email,String password);
+	
+	@Modifying()
+	@Query(value="UPDATE EmployeeDataPojo set role=:role where email=:email")
+	@Transactional
+	void employeeType(@Param("role") String role, @Param("email") String email);
+	
 	
 	@Query("from EmployeeDataPojo where email=?1") 
 	EmployeeDataPojo findEmp(String email);
+	
+	@Query("from EmployeeDataPojo where emp_id=?1") 
+	EmployeeDataPojo findEmp(int empId);
 	
 	
 	@Modifying()

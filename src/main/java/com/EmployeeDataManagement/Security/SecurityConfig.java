@@ -27,9 +27,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 	     	.authorizeRequests()
 //	     	.antMatchers(HttpMethod.POST,"/employeeLogin").hasRole("ADMIN")
 //	     	.antMatchers(HttpMethod.POST,"setPassword").permitAll()
-	     	.antMatchers("/adminHome","/profile").hasRole("ADMIN")
-	     	.antMatchers("/analystHome","/profile").hasRole("ANALYST")
-	     	.antMatchers("/employeeHome","/profile").hasRole("USER")
+	     	.antMatchers("/adminHome","/adminUpdate","/deleteEmployee","/removeEmployee","/selectEmployee").hasRole("ADMIN")
+	     	.antMatchers("/analystHome").hasRole("ANALYST")
+	     	.antMatchers("/employeeHome").hasRole("USER")
+	     	.antMatchers("/employeeList","/updateEmployeeDetails").hasAnyRole("ADMIN","ANALYST")
+	     	.antMatchers("/profile").hasAnyRole("ADMIN","ANALYST","USER")
 	     	.antMatchers("/**").permitAll()
 	     	.anyRequest()
 	     	.authenticated()
@@ -37,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 	     	.formLogin().loginPage("/loginPage")
 	     	.successHandler(successHandler);
 	    }
+	
 	
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder()

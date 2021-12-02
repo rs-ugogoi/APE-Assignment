@@ -55,15 +55,13 @@
 			</thead>
 		<tbody>
 			<c:forEach items="${employee}" var="list">
-			<form action="adminAction" method="post" >
 				<tr>
 						<td>${list.empId}</td><td>${list.name}</td>
 						<td>${list.surname}</td><td>${list.pNumber}</td>
 						<td>${list.email}</td><td>${list.role}</td>
-						<td><a href="update"><button>Update</button></a></td>
-						<td><input type="button" value="Delete" name="option"></td>
+					<!-- 	<td><a href="update"><button>Update</button></a></td>
+						<td><input type="button" value="D" name="option"></td> -->
 				</tr>
-			</form>
 			</c:forEach>		
 		</tbody>
 		</table>

@@ -29,6 +29,12 @@ public class EmployeeDataPojo {
 	@NonNull
 	String password;
 	
+	public EmployeeDataPojo(int empId) {
+		super();
+		this.empId = empId;
+	}
+
+
 	public EmployeeDataPojo(int empId, String password) {
 		super();
 		this.empId = empId;
