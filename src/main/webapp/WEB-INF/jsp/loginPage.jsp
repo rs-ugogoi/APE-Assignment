@@ -40,7 +40,7 @@
 		<table>
 			<tr>
 				<td>Email Id:</td>
-				<td><input class="textBox" name="username" type="text" ></td>
+				<td><input class="textBox" name="username" type="email" ></td>
 			</tr>
 			<tr>
 			<td></td><td></td>

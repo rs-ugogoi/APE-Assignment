@@ -42,27 +42,27 @@
 				<td colspan="2">Details</td>
 			</tr>
 			<tr>
-				<td>Emp Id:</td><td>${employee.empId}</td>
+				<td>Emp Id:</td><td>${empDetails.empId}</td>
 			</tr>
 			<tr>
-				<td>Name:</td><td>${employee.name} ${employee.surname}</td>
+				<td>Name:</td><td>${empDetails.name} ${empDetails.surname}</td>
 			</tr>
 			<tr>
-				<td>Mobile no:</td><td>${employee.pNumber}</td>
+				<td>Mobile no:</td><td>${empDetails.pNumber}</td>
 			</tr>
 			<tr>
-				<td>Email Id:</td><td>${employee.email}</td>
+				<td>Email Id:</td><td>${empDetails.email}</td>
 			</tr>	
 		</table>
 </div>
 <br>
-<div class="centerBlock" style="display:block; color:black; font-size:30px; font-family: 'Play', sans-serif;">
+<div class="centerBlock" style="display:block; c olor:black; font-size:30px; font-family: 'Play', sans-serif;">
 	Update Details:
 	<a style="text-decoration: none" href="update"><button class="textBox" >Update</button></a>
 	<br>
-	Reset password:
+	<!--  Reset password:
 	<a style="text-decoration: none" href="password"><button class="textBox" >Password</button></a>
-	<br>
+	<br>-->
 	Delete Account:
 	<a style="text-decoration: none" href="delete"><button class="textBox" >Delete</button></a>
 </div>

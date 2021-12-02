@@ -26,11 +26,27 @@
 		<a href="logoutPage" style="padding-top: 6px; padding-right:15px; color:white; text-decoration: none ;font-family: 'Play', sans-serif; font-size: 30px" onClick="logout()">Logout</a>
 	</div>
 </nav>
-
+<br>
+<br>
+<form class="centerBlock" action="selectEmployee" method="post" style="font-size:40px; display: block;">
+	Enter Employee Id:
+	<input class="textBox" name="empId" type="number">
+	<br>
+	<input class="textBox" style="font-size:20px" type="submit" value="Enter">
+	<br>
+	
+</form>
 <br>
 <br>
 <form class="centerBlock" action="updateEmployeeDetails" method="post" style="font-size:40px">
+	
+	<br>
 		<table>
+			<tr>
+				<td colspan="2">
+					Employee Details
+				</td>
+			</tr>
 			<tr>
 				<td>Employee ID:</td>
 				<td><input class="textBox" name="empId" value="${empDetails.empId}" type="number"></td>
@@ -49,15 +65,31 @@
 			</tr>
 			<tr>
 				<td>Mobile Number:</td>
-				<td><input class="textBox" name="pNumber" value="${empDetails.pNumber}" type="text" ></td>
+				<td><input class="textBox" name="pNumber" value="${empDetails.pNumber}" type="number" ></td>
 			</tr>
 			<tr>
 			<td colspan="2">
-				<input class="textBox" style="font-size:30px" type="submit"  value="UPDATE">
+				<input class="textBox" style="font-size:20px" type="submit"  value="UPDATE">
 			</td>
 			</tr>
 		</table>
 		<!-- onclick="test()" -->
 </form>
+<br>
+<br>
+
+	<form class="centerBlock" action="employeeType" method="post" style="font-size:40px;display: block; margin:0px">
+		
+	<!-- <p style="margin:0px">Select Employee Type</p> -->	
+		 <label for="role">Select Employee Type:</label>
+ 			<select name="role" id="role" style="font-size:20px;">
+ 				<option value="">--Select One--</option>
+   				<option value="ROLE_ANALYST">ANALYST</option>
+    			<option value="ROLE_USER">USER</option>
+    			<option value="ROLE_ADMIN">ADMIN</option>
+ 			 </select>
+ 			 <br>
+  			<input class="textBox" style="font-size:20px" type="submit" value="Submit">
+	</form>
 </body>
 </html>

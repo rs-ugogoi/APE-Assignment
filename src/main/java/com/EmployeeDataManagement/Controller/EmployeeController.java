@@ -30,7 +30,7 @@ public class EmployeeController {
 		String email=(String)session.getAttribute("name");
 		empDetails=employeeDataRepository.findEmp(email);
 		
-		session.setAttribute("employee",empDetails);
+		session.setAttribute("empDetails",empDetails);
 		return "employeeHome";
 	}
 	
@@ -39,14 +39,14 @@ public class EmployeeController {
 	{
 		
 		employeeDataRepository.updateEmployeeDetails((String)request.getParameter("email"),(String)request.getParameter("name"),(String)request.getParameter("surname"),(String)request.getParameter("pNumber"),(String)request.getParameter("empId"));
-		response.sendRedirect("employeeHome");
+		response.sendRedirect("profile");
 	}
 	
 	@GetMapping("delete")
 	public void delete(HttpServletRequest request, HttpServletResponse response) throws IOException
 	{
 		HttpSession session=request.getSession();
-		empDetails=(EmployeeDataPojo) session.getAttribute("employee");
+		empDetails=(EmployeeDataPojo) session.getAttribute("empDetails");
 		employeeDataRepository.deleteById(empDetails.getEmpId());
 		
 		response.sendRedirect("landingPage");
