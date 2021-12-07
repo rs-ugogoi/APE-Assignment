@@ -17,18 +17,6 @@
 
 </head>
 
-<%
-	String name=(String)session.getAttribute("name");
-
-	response.setHeader("Cache-Control","no-cache, no-store,must-revalidate");
-	response.setHeader("Pragma", "no-cache");
-	
-	if(name==null)	
-	{
-		response.sendRedirect("loginPage");
-	}
-%>
-
 <body class="background">
 <nav style="background-color:#121eb9; justify-content:space-between ; display: flex; height:50px; width: 100%; z-index: 1">
 	<div style="padding-top: 6px; ">

@@ -26,7 +26,6 @@ public class EmployeeDataPojo {
 	}
 	
 	
-	@NonNull
 	String password;
 	
 	public EmployeeDataPojo(int empId) {

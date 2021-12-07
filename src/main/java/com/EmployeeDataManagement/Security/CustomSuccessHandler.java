@@ -25,6 +25,7 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 		String redirectUrl = null;
 		HttpSession session=request.getSession();
 		
+		session.setAttribute("name",(String)request.getParameter("username"));
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 		
 //		Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();

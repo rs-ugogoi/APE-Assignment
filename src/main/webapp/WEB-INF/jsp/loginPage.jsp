@@ -25,17 +25,7 @@
 <div class="pageDisplay" >
 <div class="block" style="color:white; text-decoration: none ;font-family: 'Play', sans-serif;">
 <b>Login Page</b>
-<%
-	String message=null ;
-	if((String)session.getAttribute("loginMessage")!= null)
-	{
-		message=(String)session.getAttribute("loginMessage");
-	}
-	else
-	{
-		message="";
-	}
-%>
+
 <form action="loginPage" method="post" style="font-size:40px">
 		<table>
 			<tr>
@@ -50,7 +40,6 @@
 				<td><input class="textBox" name="password" type="password"></td>
 			</tr>
 		</table>
-		<p style="margin: 0px; color:red ; font-size: 20px"><%= message %></p>	
 		<!-- onclick="test()" -->
 <input class="textBox" style="font-size:30px" type="submit"  value="login">
 </form>
