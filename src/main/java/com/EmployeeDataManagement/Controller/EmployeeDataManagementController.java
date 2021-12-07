@@ -1,22 +1,15 @@
 package com.EmployeeDataManagement.Controller;
 
-
-
-
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-
-
-
-
+import com.EmployeeDataManagement.Service.AuthnService;
 
 @RestController
 @RequestMapping("/")
@@ -24,6 +17,9 @@ public class EmployeeDataManagementController {
 	
 	private ModelAndView modelView=new ModelAndView();
 
+	@Autowired
+	private AuthnService authnService;
+	
 	@GetMapping({"/","/landingPage"})
 	public ModelAndView landingPage()
 	{
@@ -32,17 +28,18 @@ public class EmployeeDataManagementController {
 	}
 	
 	@GetMapping("loginPage")
-	public ModelAndView loginPage()
+	public ModelAndView loginPage(HttpServletRequest request, HttpServletResponse response)
 	{
 		modelView.setViewName("loginPage");
 		return modelView;
 	}
 	
-//	@GetMapping("logoutPage")
-//	public String logoutPage()
-//	{
-//		return "logoutPage";
-//	}
+	@GetMapping("logoutPage")
+	public ModelAndView logoutPage()
+	{
+		modelView.setViewName("logoutPage");
+		return modelView;
+	}
 		
 	@GetMapping("signup")
 	public ModelAndView signUpPage()
@@ -52,19 +49,9 @@ public class EmployeeDataManagementController {
 	}
 	
 	@GetMapping("profile")
-	public ModelAndView profile(HttpServletResponse response,HttpServletRequest request)
+	public ModelAndView Profile(HttpServletRequest request)
 	{
-		HttpSession session=request.getSession();
-		String email=(String) session.getAttribute("email");
-		session.setAttribute("name",email); 
-		
-		if(session.getAttribute("role")!=null && session.getAttribute("role").equals("ROLE_USER"))
-			modelView.setViewName("employeeHome");
-		else if(session.getAttribute("role")!=null && session.getAttribute("role").equals("ROLE_ANALYST"))
-			modelView.setViewName("analystHome");
-		else if(session.getAttribute("role")!=null &&session.getAttribute("role").equals("ROLE_ADMIN"))
-			modelView.setViewName("adminHome");
-		return modelView ;
+		return authnService.ViewProfile(request);
 	}
 		
 	
@@ -76,13 +63,26 @@ public class EmployeeDataManagementController {
 	
 	
 	@GetMapping("update")
-	public String update()
+	public ModelAndView update()
 	{
 		modelView.setViewName("update");
-		return "update";
+		return modelView;
 	}
 	
 
+	@GetMapping("adminUpdate")
+	public ModelAndView adminUpdate()
+	{
+		modelView.setViewName("adminUpdate");
+		return modelView;
+	}
 	
+	
+	@GetMapping("deleteEmployee")
+	public ModelAndView deleteEmployee(HttpServletRequest request,HttpServletResponse response)
+	{
+		modelView.setViewName("delete");
+		return modelView;
+	}
 
 }

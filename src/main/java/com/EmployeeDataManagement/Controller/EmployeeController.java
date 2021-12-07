@@ -4,57 +4,41 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.EmployeeDataManagement.Repository.EmployeeDataRepository;
+import com.EmployeeDataManagement.Service.AppFeatures;
 import com.EmployeeDataManagement.pojo.EmployeeDataPojo;
 
-@Controller
+@RestController
 public class EmployeeController {
 
-	@Autowired
-	EmployeeDataRepository employeeDataRepository; 
 	
-	EmployeeDataPojo empDetails;
+	@Autowired
+	private AppFeatures appFeatures;
 	
 	@GetMapping("employeeHome")
-	public String employeeHome(HttpServletRequest request, HttpServletResponse response)
+	public ModelAndView employeeHome(HttpServletRequest request, HttpServletResponse response)
 	{
-		HttpSession session=request.getSession();
-		String email=(String)session.getAttribute("name");
-		empDetails=employeeDataRepository.findEmp(email);
-		
-		session.setAttribute("empDetails",empDetails);
-		return "employeeHome";
+		return appFeatures.Profile(request);
 	}
 	
 	@PostMapping("updateEmployeeDetails")
-	public void updateEmployeeDetails(@ModelAttribute EmployeeDataPojo employeeDetails,HttpServletRequest request, HttpServletResponse response) throws IOException
+	public ModelAndView updateEmployeeDetails(@ModelAttribute EmployeeDataPojo employeeDetails,HttpServletRequest request, HttpServletResponse response) throws IOException
 	{
-		
-		employeeDataRepository.updateEmployeeDetails((String)request.getParameter("email"),(String)request.getParameter("name"),(String)request.getParameter("surname"),(String)request.getParameter("pNumber"),(String)request.getParameter("empId"));
-		response.sendRedirect("profile");
+		return appFeatures.UpdateDetails(employeeDetails,request);
 	}
 	
 	@GetMapping("delete")
-	public void delete(HttpServletRequest request, HttpServletResponse response) throws IOException
+	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response) throws IOException
 	{
-		HttpSession session=request.getSession();
-		empDetails=(EmployeeDataPojo) session.getAttribute("empDetails");
-		employeeDataRepository.deleteById(empDetails.getEmpId());
-		
-		response.sendRedirect("landingPage");
+		return appFeatures.DeleteEmployee(request);
 	}
 	
-	@GetMapping("password")
-	public  void password(HttpServletRequest request, HttpServletResponse response)
-	{
-		System.out.println(request.getParameter("pas"));
-	}
+
 }

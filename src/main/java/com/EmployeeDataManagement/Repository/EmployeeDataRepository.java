@@ -16,30 +16,30 @@ public interface EmployeeDataRepository extends JpaRepository<EmployeeDataPojo, 
 	@Modifying()
 	@Query(value="UPDATE EmployeeDataPojo set password=:password where emp_id=:empId")
 	@Transactional
-	void setPassword(@Param("password") String password, @Param("empId") String empId);
+	public void setPassword(@Param("password") String password, @Param("empId") int empId);
 	
 	
 	@Modifying()
 	@Query(value="UPDATE EmployeeDataPojo set role=:role where email=:email")
 	@Transactional
-	void employeeType(@Param("role") String role, @Param("email") String email);
+	public void employeeType(@Param("role") String role, @Param("email") String email);
 	
 	
 	@Query("from EmployeeDataPojo where email=?1") 
-	EmployeeDataPojo findEmp(String email);
+	public EmployeeDataPojo findEmp(String email);
 	
 	@Query("from EmployeeDataPojo where emp_id=?1") 
-	EmployeeDataPojo findEmp(int empId);
+	public EmployeeDataPojo findEmp(int empId);
 	
 	
 	@Modifying()
 	@Query(value="UPDATE EmployeeDataPojo set email=:email,name=:name,surname=:surname,p_number=:pNumber where emp_id=:empId")
 	@Transactional
-	void updateEmployeeDetails
+	public void updateEmployeeDetails
 			(@Param("email") String email,
 			@Param("name") String name,
 			@Param("surname") String surname,
-			@Param("pNumber") String pNumber, 
-			@Param("empId") String empId);
+			@Param("pNumber") long pNumber, 
+			@Param("empId") int empId);
 
 }
